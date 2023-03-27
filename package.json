@@ -1,0 +1,29 @@
+{
+  "name": "social-network",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test sepecified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node util/seed.js",
+    "prettier": "npx prettier --write ."
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RaminNoorzada/Social-Network.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13"
+    
+  },
+  "devDependencies": {
+    
+  
+  }
+}

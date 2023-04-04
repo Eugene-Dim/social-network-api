@@ -1,50 +1,30 @@
 const addDateSuffix = (date) => {
-  if (date >= 11 && date <= 13) {
-    return `${date}th`;
-  }
-
-  const lastDigit = date % 10;
-
-  switch (lastDigit) {
-    case 1:
-      return `${date}st`;
-    case 2:
-      return `${date}nd`;
-    case 3:
-      return `${date}rd`;
-    default:
-      return `${date}th`;
-  }
+  const suffixes = {
+    1: 'st',
+    2: 'nd',
+    3: 'rd',
+    11: 'th',
+    12: 'th',
+    13: 'th',
+  };
+  const lastTwoDigits = date % 100;
+  const suffix = suffixes[date] || suffixes[lastTwoDigits] || suffixes[0];
+  return `${date}${suffix}`;
 };
 
-const MONTHS_SHORT = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
-
-const MONTHS_LONG = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+const MONTHS = [
+  { shortName: 'Jan', longName: 'January' },
+  { shortName: 'Feb', longName: 'February' },
+  { shortName: 'Mar', longName: 'March' },
+  { shortName: 'Apr', longName: 'April' },
+  { shortName: 'May', longName: 'May' },
+  { shortName: 'Jun', longName: 'June' },
+  { shortName: 'Jul', longName: 'July' },
+  { shortName: 'Aug', longName: 'August' },
+  { shortName: 'Sep', longName: 'September' },
+  { shortName: 'Oct', longName: 'October' },
+  { shortName: 'Nov', longName: 'November' },
+  { shortName: 'Dec', longName: 'December' },
 ];
 
 module.exports = (
@@ -54,7 +34,8 @@ module.exports = (
   const date = new Date(timestamp);
 
   const monthIndex = date.getMonth();
-  const monthName = monthLength === 'short' ? MONTHS_SHORT[monthIndex] : MONTHS_LONG[monthIndex];
+  const { shortName: shortMonthName, longName: longMonthName } = MONTHS[monthIndex];
+  const monthName = monthLength === 'short' ? shortMonthName : longMonthName;
 
   const day = dateSuffix ? addDateSuffix(date.getDate()) : date.getDate();
 

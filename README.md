@@ -14,6 +14,3 @@ This API responds with appropriate HTTP status codes and error messages when the
 
 ## Date formatting
 The API uses the native JavaScript Date object for date formatting.
-
-## License
-This project is licensed under the () License. See the LICENSE file for details.

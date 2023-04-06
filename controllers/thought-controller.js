@@ -102,3 +102,6 @@ const thoughtController = {
       const dbThoughtData = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
         { $
+
+
+module.export = this.removeReaction ();
